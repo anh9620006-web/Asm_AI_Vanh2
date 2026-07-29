@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/white"
+                android:padding="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="&lt;-"
+                android:textColor="#1B5E20"
+                android:textSize="18sp"
+                app:cornerRadius="8dp" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Discrete Mathematics"
+                android:textColor="#1B5E20"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="4dp"
+            android:background="#2E7D32"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lesson 1: Logic and Sets"
+            android:textColor="#2E7D32"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="25dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/dm_ls1"
+                android:scaleType="centerInside"
+                android:padding="10dp"
+                android:background="#FFFFFF"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="General Introduction"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#212121"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Combinatorics is a significant branch of discrete mathematics that addresses a wide range of mathematical problems. Combinatorial theory studies the distribution of elements into sets.\n\nTypically, the sets consist of a finite number of elements, and their distribution must satisfy specific conditions dictated by the problem at hand. Each such distribution is regarded as a 'combinatorial configuration.'\n\nThese configurations are analyzed in the context of counting, enumeration, existence, or optimization problems. A counting problem is one that seeks to answer the question: 'How many configurations satisfy the stated conditions?'"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#424242"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:backgroundTint="#2E7D32"
+            android:text="Ask AI"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            app:cornerRadius="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

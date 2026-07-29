@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+
+    <TextView
+        android:id="@+id/txtScore"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Score: 0/10"
+
+        android:textSize="28sp"
+
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/txtPercentage"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+
+        android:text="Percentage: 0%"
+
+        android:textSize="22sp"/>
+
+
+
+    <TextView
+        android:id="@+id/txtFeedback"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="30dp"
+
+        android:text="Feedback"
+
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btnBackLesson"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+
+        android:text="Back to Lesson"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/wrongRecyclerView"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>

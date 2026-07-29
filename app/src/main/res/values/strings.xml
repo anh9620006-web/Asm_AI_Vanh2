@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name"> AI Mentor </string>
+    <string name="open_nav"> Open </string>
+    <string name="close_nav"> Close </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_activity_title">Main Activity</string>
+    <string name="second_life_cycle_activity">Second Life Cycle Activity</string>
+    <string name="chat_title">AI Mentor Chat</string>
+    <string name="chat_hint">Type your question...</string>
+    <string name="send">Send</string>
+    <string name="discrete_mathematics">Discrete Mathematics</string>
+    <string name="lesson_1_logic_and_sets">Lesson 1: Logic and Sets</string>
+    <string name="general_introduction">General Introduction</string>
+    <string name="combinatorics_intro">Combinatorics is a significant branch of discrete mathematics that addresses a wide range of mathematical problems. Combinatorial theory studies the distribution of elements into sets.\n\nTypically, the sets consist of a finite number of elements, and their distribution must satisfy specific conditions dictated by the problem at hand. Each such distribution is regarded as a \'combinatorial configuration.\'\n\nThese configurations are analyzed in the context of counting, enumeration, existence, or optimization problems. A counting problem is one that seeks to answer the question: \'How many configurations satisfy the stated conditions?\'</string>
+    <string name="ask_ai">Ask AI</string>
+    <string name="back">Back</string>
+    <string name="lesson_image">Lesson Image</string>
+    <string name="motivation_title">Daily Motivation</string>
+
+    <string name="motivation_quote_1">
+    Success is the sum of small efforts, repeated day in and day out.
+</string>
+    <string name="motivation_author_1">- Robert Collier</string>
+
+    <string name="motivation_quote_2">
+    Learn as if you were to live forever.
+</string>
+    <string name="motivation_author_2">- Mahatma Gandhi</string>
+
+    <string name="motivation_quote_3">
+    It does not matter how slowly you go, as long as you do not stop.
+</string>
+    <string name="motivation_author_3">- Confucius</string>
+</resources>

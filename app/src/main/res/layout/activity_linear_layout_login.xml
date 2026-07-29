@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BTec FPT - Pearson UK"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="45dp"/>
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_btec"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="System Login"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="false"
+        android:background="#E4E4E4"
+        android:hint="Enter Username ..."
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#858282" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="false"
+        android:background="#E4E4E4"
+        android:hint="Enter Password..."
+        android:inputType="textPassword"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#858282" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#6CE9EF"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do you have an account ?"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignUp an account"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:id="@+id/tvSignUp"/>
+</LinearLayout>
