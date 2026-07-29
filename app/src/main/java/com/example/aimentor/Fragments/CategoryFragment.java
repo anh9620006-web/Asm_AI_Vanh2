@@ -98,98 +98,146 @@ public class CategoryFragment extends Fragment {
         });
     }
 
-    private void showCourses(List<CourseModel> courses, String status) {
-//        if (!isAdded()) return;
-//        requireActivity().runOnUiThread(() -> {
-//            tvCourseStatus.setText(status);
-//            layoutServerCourses.removeAllViews();
-//
-//            for (CourseModel course : courses) {
-//                LinearLayout item = new LinearLayout(requireContext());
-//                item.setOrientation(LinearLayout.VERTICAL);
-//                item.setPadding(24, 20, 24, 20);
-//                LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(
-//                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//                itemParams.setMargins(8, 8, 8, 8);
-//                item.setLayoutParams(itemParams);
-//                item.setBackgroundColor(0xFFE3F2FD);
-//
-//                TextView title = new TextView(requireContext());
-//                title.setText(course.getTitle());
-//                title.setTextSize(18);
-//                title.setTextColor(0xFF000000);
-//                title.setTypeface(null, android.graphics.Typeface.BOLD);
-//                item.addView(title);
-//
-//                if (course.getDescription() != null && !course.getDescription().isEmpty()) {
-//                    TextView description = new TextView(requireContext());
-//                    description.setText(course.getDescription());
-//                    description.setTextColor(0xFF333333);
-//                    item.addView(description);
-//                }
-//
-//                item.setOnClickListener(v -> Toast.makeText(requireContext(),
-//                        "Đã chọn: " + course.getTitle(), Toast.LENGTH_SHORT).show());
-//                layoutServerCourses.addView(item);
-//            }
-//        });
-
-
-        if (!isAdded()) return;
+    private void showCourses(
+            List<CourseModel> courses,
+            String status
+    ) {
+        if (!isAdded()) {
+            return;
+        }
 
         requireActivity().runOnUiThread(() -> {
+            if (!isAdded()) {
+                return;
+            }
 
             layoutCourses.removeAllViews();
 
-            for (CourseModel course : courses) {
+            // Trường hợp database không có môn học
+            if (courses == null || courses.isEmpty()) {
+                TextView emptyView =
+                        new TextView(requireContext());
 
-                CardView card = new CardView(requireContext());
-                card.setRadius(20);
-                card.setCardElevation(8);
+                emptyView.setText(
+                        status == null || status.isEmpty()
+                                ? "No courses are available."
+                                : status
+                );
 
-                LinearLayout.LayoutParams params =
-                        new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT);
-                params.setMargins(0, 20, 0, 20);
-                card.setLayoutParams(params);
+                emptyView.setTextSize(16);
+                emptyView.setTextColor(0xFF697386);
+                emptyView.setGravity(
+                        android.view.Gravity.CENTER
+                );
+                emptyView.setPadding(20, 80, 20, 80);
 
-                LinearLayout root = new LinearLayout(requireContext());
-                root.setOrientation(LinearLayout.VERTICAL);
-
-                TextView title = new TextView(requireContext());
-                title.setText(course.getTitle());
-                title.setTextSize(20);
-                title.setPadding(40, 40, 40, 40);
-                title.setTypeface(null, android.graphics.Typeface.BOLD);
-
-                LinearLayout lessonLayout = new LinearLayout(requireContext());
-                lessonLayout.setOrientation(LinearLayout.VERTICAL);
-                lessonLayout.setVisibility(View.GONE);
-
-                root.setOnClickListener(v -> {
-
-                    if (lessonLayout.getChildCount() == 0) {
-                        loadLessons(course.getServerId(), course.getTitle(), lessonLayout);
-                    }
-
-                    if (lessonLayout.getVisibility() == View.GONE) {
-                        lessonLayout.setVisibility(View.VISIBLE);
-                    } else {
-                        lessonLayout.setVisibility(View.GONE);
-                    }
-                });
-
-                root.addView(title);
-                root.addView(lessonLayout);
-
-                card.addView(root);
-
-                layoutCourses.addView(card);
+                layoutCourses.addView(emptyView);
+                return;
             }
 
-        });
+            LayoutInflater inflater =
+                    LayoutInflater.from(requireContext());
 
+            for (CourseModel course : courses) {
+                // Tạo card từ item_course.xml
+                View courseView = inflater.inflate(
+                        R.layout.item_course,
+                        layoutCourses,
+                        false
+                );
+
+                TextView tvCourseTitle =
+                        courseView.findViewById(
+                                R.id.tvCourseTitle
+                        );
+
+                TextView tvCourseDescription =
+                        courseView.findViewById(
+                                R.id.tvCourseDescription
+                        );
+
+                TextView tvCourseStatus =
+                        courseView.findViewById(
+                                R.id.tvCourseStatus
+                        );
+
+                LinearLayout layoutCourseHeader =
+                        courseView.findViewById(
+                                R.id.layoutCourseHeader
+                        );
+
+                LinearLayout layoutLessons =
+                        courseView.findViewById(
+                                R.id.layoutLessons
+                        );
+
+                ImageView ivExpandCourse =
+                        courseView.findViewById(
+                                R.id.ivExpandCourse
+                        );
+
+                // Đưa dữ liệu database lên giao diện
+                tvCourseTitle.setText(course.getTitle());
+
+                String description =
+                        course.getDescription();
+
+                if (description == null ||
+                        description.trim().isEmpty()) {
+
+                    tvCourseDescription.setVisibility(
+                            View.GONE
+                    );
+
+                } else {
+                    tvCourseDescription.setVisibility(
+                            View.VISIBLE
+                    );
+
+                    tvCourseDescription.setText(
+                            description
+                    );
+                }
+
+                if (course.isPublished()) {
+                    tvCourseStatus.setText("Available");
+                    tvCourseStatus.setTextColor(0xFF3346D3);
+                } else {
+                    tvCourseStatus.setText("Unavailable");
+                    tvCourseStatus.setTextColor(0xFF697386);
+                }
+
+                // Mở hoặc đóng danh sách bài học
+                layoutCourseHeader.setOnClickListener(v -> {
+                    boolean shouldOpen =
+                            layoutLessons.getVisibility()
+                                    == View.GONE;
+
+                    if (shouldOpen &&
+                            layoutLessons.getChildCount() == 0) {
+
+                        loadLessons(
+                                course.getServerId(),
+                                course.getTitle(),
+                                layoutLessons
+                        );
+                    }
+
+                    layoutLessons.setVisibility(
+                            shouldOpen
+                                    ? View.VISIBLE
+                                    : View.GONE
+                    );
+
+                    ivExpandCourse.animate()
+                            .rotation(shouldOpen ? 180f : 0f)
+                            .setDuration(200)
+                            .start();
+                });
+
+                layoutCourses.addView(courseView);
+            }
+        });
     }
 
     private void loadLessons(int courseId, String courseTitle, LinearLayout lessonLayout) {
